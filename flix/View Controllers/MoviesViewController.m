@@ -15,7 +15,6 @@
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic, strong) NSArray *movies;
-@property (strong, nonatomic) NSArray *data;
 @property (strong, nonatomic) NSArray *filteredData;
 @property (nonatomic, strong) UIRefreshControl *refreshControl;
 @property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
@@ -51,6 +50,22 @@
     NSURLSessionDataTask *task = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
         if (error != nil) {
             NSLog(@"%@", [error localizedDescription]);
+            UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Cannot Get Movies"
+                                                                           message:@"The internet connection appears to be offline."
+                                                                    preferredStyle:(UIAlertControllerStyleAlert)];
+            // create a try again action
+            UIAlertAction *tryAgainAction = [UIAlertAction actionWithTitle:@"Try Again"
+                                                                     style:UIAlertActionStyleCancel
+                                                                   handler:^(UIAlertAction * _Nonnull action) {
+                                                                       // handle cancel response here. Doing nothing will dismiss the view.
+                                                                       [self fetchMovies];
+                                                                   }];
+            // add the cancel action to the alertController
+            [alert addAction:tryAgainAction];
+            
+            [self presentViewController:alert animated:YES completion:^{
+                // optional code for what happens after the alert controller has finished presenting
+            }];
         }
         else {
             NSDictionary *dataDictionary = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
@@ -59,6 +74,8 @@
             for (NSDictionary *movie in self.movies) {
                 NSLog(@"%@", movie[@"title"]);
             }
+            
+            self.filteredData = self.movies;
             
             [self.tableView reloadData];
             // TODO: Get the array of movies
@@ -75,14 +92,16 @@
     [task resume];
 }
 
-//- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-//    return self.movies.count;
-//}
+// Search Bar - filteredData
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return self.filteredData.count;
+}
 
+// Search Bar - filteredData
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    MovieCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MovieCell"];
+    MovieCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MovieCell" forIndexPath:indexPath];
     
-    NSDictionary *movies = self.movies[indexPath.row];
+    NSDictionary *movies = self.filteredData[indexPath.row];
     cell.titleLabel.text = movies[@"title"];
     cell.synopsisLabel.text = movies[@"overview"];
     
@@ -114,34 +133,43 @@
     [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.movies.count;
-}
-
-//- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+// pre-search bar
 //
-//    UITableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"TableCell"
-//                                                                 forIndexPath:indexPath];
-//    cell.textLabel.text = self.filteredData[indexPath.row];
+//- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+//    return self.movies.count;
+//}
+
+// pre-search bar
+//
+//- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+//    MovieCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MovieCell"];
+//
+//    NSDictionary *movies = self.movies[indexPath.row];
+//    cell.titleLabel.text = movies[@"title"];
+//    cell.synopsisLabel.text = movies[@"overview"];
+//
+//    NSString *baseURLString = @"https://image.tmdb.org/t/p/w500";
+//    NSString *posterURLString = movies[@"poster_path"];
+//    NSString *fullPosterURLString = [baseURLString stringByAppendingString:posterURLString];
+//
+//    NSURL *posterURL = [NSURL URLWithString:fullPosterURLString];
+//    cell.posterView.image = nil;
+//    [cell.posterView setImageWithURL:posterURL];
 //
 //    return cell;
 //}
 
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
-    
     if (searchText.length != 0) {
-        
-        NSPredicate *predicate = [NSPredicate predicateWithBlock:^BOOL(NSString *evaluatedObject, NSDictionary *bindings) {
-            return [evaluatedObject containsString:searchText];
+        NSPredicate *predicate = [NSPredicate predicateWithBlock:^BOOL(id evaluatedObject, NSDictionary *bindings) {
+            return [evaluatedObject[@"title"] containsString:searchText];
         }];
-        self.filteredData = [self.data filteredArrayUsingPredicate:predicate];
-        
+        self.filteredData = [self.movies filteredArrayUsingPredicate:predicate];
         NSLog(@"%@", self.filteredData);
-        
+    } else {
+        self.filteredData = self.movies;
     }
-    else {
-        self.filteredData = self.data;
-    }
+    [self.tableView reloadData];
 }
 
 @end

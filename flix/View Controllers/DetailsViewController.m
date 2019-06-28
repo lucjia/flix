@@ -81,7 +81,7 @@
     [self.dateLabel sizeToFit];
     
     [self.posterView.layer setBorderColor: [[UIColor whiteColor] CGColor]];
-    [self.posterView.layer setBorderWidth: 3.0];
+    [self.posterView.layer setBorderWidth: 2.0];
     self.backdropView.alpha = 0.8;
     
 //    CAGradientLayer *gradientView = [CAGradientLayer layer];
