@@ -9,6 +9,7 @@
 #import "DetailsViewController.h"
 #import "UIImageView+AFNetworking.h"
 #import <QuartzCore/QuartzCore.h>
+#import "ReviewViewController.h"
 
 @interface DetailsViewController ()
 
@@ -18,6 +19,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *dateLabel;
 @property (weak, nonatomic) IBOutlet UITextView *synopsisTextView;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
+@property (weak, nonatomic) IBOutlet UIButton *reviewButton;
 
 @end
 
@@ -98,35 +100,6 @@
     self.titleLabel.text = self.movie[@"title"];
     self.synopsisTextView.text = self.movie[@"overview"];
     
-//    NSMutableString *dateString = @"";
-//    NSMutableString *monthString = [self.movie[@"release_date"] substringWithRange:NSMakeRange(5, 2)];
-//
-//    if ([monthString isEqualToString: @"01"]) {
-//        [dateString appendString: @"January "];
-//    } else if ([monthString isEqualToString: @"02"]) {
-//        [dateString appendString: @"February "];
-//    } else if ([monthString isEqualToString: @"03") {
-//        [dateString appendString: @"March "];
-//    } else if (self.movie[@"release_date"] substringWithRange:NSMakeRange(5, 2) = @"04") {
-//        [dateString appendString: @"April "];
-//    } else if (self.movie[@"release_date"] substringWithRange:NSMakeRange(5, 2) = @"05") {
-//        [dateString appendString: @"May "];
-//    } else if (self.movie[@"release_date"] substringWithRange:NSMakeRange(5, 2) = @"06") {
-//        [dateString appendString: @"June "];
-//    } else if (self.movie[@"release_date"] substringWithRange:NSMakeRange(5, 2) = @"07") {
-//        [dateString appendString: @"July "];
-//    } else if (self.movie[@"release_date"] substringWithRange:NSMakeRange(5, 2) = @"08") {
-//        [dateString appendString: @"August "];
-//    } else if (self.movie[@"release_date"] substringWithRange:NSMakeRange(5, 2) = @"09") {
-//        [dateString appendString: @"September "];
-//    } else if (self.movie[@"release_date"] substringWithRange:NSMakeRange(5, 2) = @"10") {
-//        [dateString appendString: @"October "];
-//    } else if (self.movie[@"release_date"] substringWithRange:NSMakeRange(5, 2) = @"11") {
-//        [dateString appendString: @"November "];
-//    } else {
-//        [dateString appendString: @"December "];
-//    }
-//
     self.dateLabel.text = self.movie[@"release_date"];
     
     [self.titleLabel sizeToFit];
@@ -143,6 +116,12 @@
     // Stop the activity indicator
     // Hides automatically if "Hides When Stopped" is enabled
     [self.activityIndicator stopAnimating];
+}
+
+- (IBAction)switchToReviews:(id)sender {
+    ReviewViewController *reviewViewController = [[ReviewViewController alloc] init];
+    reviewViewController.movie = self.movie;
+    [self presentViewController:reviewViewController animated:YES completion:nil];
 }
 
 /*

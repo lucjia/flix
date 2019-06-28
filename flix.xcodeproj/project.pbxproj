@@ -20,6 +20,8 @@
 		8551EBA022C427BC00C8E419 /* DetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8551EB9F22C427BC00C8E419 /* DetailsViewController.m */; };
 		8551EBA322C43C5D00C8E419 /* MoviesGridViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8551EBA222C43C5D00C8E419 /* MoviesGridViewController.m */; };
 		8551EBA622C444BB00C8E419 /* MovieCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8551EBA522C444BB00C8E419 /* MovieCollectionCell.m */; };
+		8567DD5322C6D769004FFD24 /* ReviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8567DD5222C6D769004FFD24 /* ReviewViewController.m */; };
+		8567DD5622C6D8A8004FFD24 /* ReviewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8567DD5522C6D8A8004FFD24 /* ReviewCell.m */; };
 		A1D578F61ADC08BA85E07497 /* libPods-flix.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7EB5CB48D32F0E8C7D218320 /* libPods-flix.a */; };
 		D37E6B1497D4443060D8FF30 /* libPods-flixUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D10C85837C9508D89795E90 /* libPods-flixUITests.a */; };
 /* End PBXBuildFile section */
@@ -69,6 +71,10 @@
 		8551EBA222C43C5D00C8E419 /* MoviesGridViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MoviesGridViewController.m; sourceTree = "<group>"; };
 		8551EBA422C444BB00C8E419 /* MovieCollectionCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MovieCollectionCell.h; sourceTree = "<group>"; };
 		8551EBA522C444BB00C8E419 /* MovieCollectionCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MovieCollectionCell.m; sourceTree = "<group>"; };
+		8567DD5122C6D769004FFD24 /* ReviewViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ReviewViewController.h; sourceTree = "<group>"; };
+		8567DD5222C6D769004FFD24 /* ReviewViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ReviewViewController.m; sourceTree = "<group>"; };
+		8567DD5422C6D8A8004FFD24 /* ReviewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ReviewCell.h; sourceTree = "<group>"; };
+		8567DD5522C6D8A8004FFD24 /* ReviewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ReviewCell.m; sourceTree = "<group>"; };
 		8D10C85837C9508D89795E90 /* libPods-flixUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-flixUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A20A5014E082D50022CEFCD5 /* Pods-flix.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-flix.release.xcconfig"; path = "Target Support Files/Pods-flix/Pods-flix.release.xcconfig"; sourceTree = "<group>"; };
 		B407497C679EB6C465B8A9C1 /* Pods-flixTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-flixTests.release.xcconfig"; path = "Target Support Files/Pods-flixTests/Pods-flixTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -169,6 +175,8 @@
 				8551EB9C22C4188900C8E419 /* MovieCell.m */,
 				8551EBA422C444BB00C8E419 /* MovieCollectionCell.h */,
 				8551EBA522C444BB00C8E419 /* MovieCollectionCell.m */,
+				8567DD5422C6D8A8004FFD24 /* ReviewCell.h */,
+				8567DD5522C6D8A8004FFD24 /* ReviewCell.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -182,6 +190,8 @@
 				8551EB9622C3FA0D00C8E419 /* MoviesViewController.m */,
 				8551EBA122C43C5D00C8E419 /* MoviesGridViewController.h */,
 				8551EBA222C43C5D00C8E419 /* MoviesGridViewController.m */,
+				8567DD5122C6D769004FFD24 /* ReviewViewController.h */,
+				8567DD5222C6D769004FFD24 /* ReviewViewController.m */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -420,8 +430,10 @@
 			files = (
 				8551EB7322C3EB6100C8E419 /* main.m in Sources */,
 				8551EBA022C427BC00C8E419 /* DetailsViewController.m in Sources */,
+				8567DD5322C6D769004FFD24 /* ReviewViewController.m in Sources */,
 				8551EB6522C3EB6000C8E419 /* AppDelegate.m in Sources */,
 				8551EBA622C444BB00C8E419 /* MovieCollectionCell.m in Sources */,
+				8567DD5622C6D8A8004FFD24 /* ReviewCell.m in Sources */,
 				8551EB9D22C4188900C8E419 /* MovieCell.m in Sources */,
 				8551EB9722C3FA0D00C8E419 /* MoviesViewController.m in Sources */,
 				8551EBA322C43C5D00C8E419 /* MoviesGridViewController.m in Sources */,
