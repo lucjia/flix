@@ -93,7 +93,6 @@
     NSURL *posterURL = [NSURL URLWithString:fullPosterURLString];
     cell.posterView.image = nil;
     [cell.posterView setImageWithURL:posterURL];
-    cell.textLabel.text = movies[@"title"];
     
     return cell;
 }
@@ -111,10 +110,12 @@
     
     DetailsViewController *detailsViewController = [segue destinationViewController];
     detailsViewController.movie = movie;
+    
+    [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.filteredData.count;
+    return self.movies.count;
 }
 
 //- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {

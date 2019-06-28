@@ -223,7 +223,7 @@
                     </view>
                     <connections>
                         <outlet property="activityIndicator" destination="Z8C-k1-0Kk" id="j7c-nF-SBD"/>
-                        <outlet property="backdropView" destination="CWR-7K-VLY" id="Wxb-X3-rgp"/>
+                        <outlet property="backdropView" destination="CWR-7K-VLY" id="Rtt-l3-sEh"/>
                         <outlet property="dateLabel" destination="BdB-bV-Nmh" id="lgv-tv-nW6"/>
                         <outlet property="posterView" destination="WfR-m7-ni2" id="ASv-at-ogN"/>
                         <outlet property="synopsisTextView" destination="zxI-Zf-dGM" id="Z7y-sQ-rRS"/>
