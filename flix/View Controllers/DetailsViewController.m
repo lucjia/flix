@@ -82,6 +82,11 @@
     
     [self.posterView.layer setBorderColor: [[UIColor whiteColor] CGColor]];
     [self.posterView.layer setBorderWidth: 3.0];
+    self.backdropView.alpha = 0.8;
+    
+//    CAGradientLayer *gradientView = [CAGradientLayer layer];
+//    gradientView.frame = self.backdropView.bounds;
+//    gradientView.colors = @[(id)[UIColor whiteColor].CGColor, (id)[UIColor clearColor].CGColor];
     
     // Stop the activity indicator
     // Hides automatically if "Hides When Stopped" is enabled
