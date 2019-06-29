@@ -66,6 +66,7 @@
     [self.posterView setImageWithURL:posterURL];
     
     NSString *backdropURLString = self.movie[@"backdrop_path"];
+    NSLog(@"%@", backdropURLString);
     NSString *fullBackdropURLString = [baseURLString stringByAppendingString:backdropURLString];
     
     NSURL *backdropURL = [NSURL URLWithString:fullBackdropURLString];
@@ -118,20 +119,18 @@
     [self.activityIndicator stopAnimating];
 }
 
-- (IBAction)switchToReviews:(id)sender {
-    ReviewViewController *reviewViewController = [[ReviewViewController alloc] init];
-    reviewViewController.movie = self.movie;
-    [self presentViewController:reviewViewController animated:YES completion:nil];
-}
 
-/*
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
+    
+    ReviewViewController *reviewViewController = [segue destinationViewController];
+    reviewViewController.movie = self.movie;
 }
-*/
+
 
 @end

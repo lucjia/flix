@@ -23,16 +23,24 @@
     
     self.reviewTableView.dataSource = self;
     self.reviewTableView.delegate = self;
+    self.reviewTableView.rowHeight = 208;
     
     [self fetchReviews];
+
 }
 
 -(void)fetchReviews {
     NSString *baseURLString = @"https://api.themoviedb.org/3/movie/";
-    NSString *movieID = self.movie[@"id"];
+    NSLog(@"%@", baseURLString);
+    NSString *movieID = [self.movie[@"id"] stringValue];
+    NSLog(@"%@", self.movie[@"id"]);
+    NSLog(@"%@", movieID);
     NSString *soFar = [baseURLString stringByAppendingString:movieID];
+    NSLog(@"%@", soFar);
     NSString *endURLString = @"/reviews?api_key=a07e22bc18f5cb106bfe4cc1f83ad8ed";
+    NSLog(@"%@", endURLString);
     NSString *fullString = [soFar stringByAppendingString:endURLString];
+    NSLog(@"%@", fullString);
     
     NSURL *url = [NSURL URLWithString:fullString];
     NSURLRequest *request = [NSURLRequest requestWithURL:url cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:10.0];
@@ -87,7 +95,7 @@
     
     NSDictionary *reviews = self.reviews[indexPath.row];
     cell.reviewerLabel.text = reviews[@"author"];
-    cell.reviewLabel.text = reviews[@"content"];
+    cell.reviewTextView.text = reviews[@"content"];
 
     return cell;
 }

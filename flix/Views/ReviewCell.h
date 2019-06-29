@@ -11,8 +11,10 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface ReviewCell : UITableViewCell
+
 @property (weak, nonatomic) IBOutlet UILabel *reviewerLabel;
-@property (weak, nonatomic) IBOutlet UITextView *reviewLabel;
+@property (weak, nonatomic) IBOutlet UITextView *reviewTextView;
+
 
 @end
 
