@@ -32,6 +32,7 @@
     
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
+    self.tableView.rowHeight = UITableViewAutomaticDimension;
     self.searchBar.delegate = self;
     self.searchBar.placeholder = @"Search for a movie...";
     
